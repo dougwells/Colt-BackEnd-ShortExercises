@@ -18,6 +18,16 @@ app.get("/dog", function(req, res){
     res.send("Meow");
 });
 
+// "/r/"       ==> "Welcome to my subreddit"
+app.get("/r/:subredditName", function(req, res){
+    res.send("Welcome to my subreddit!");
+});
+
+// "/*"     ==> any URL other than those defined above
+app.get("/*", function(req, res){
+    res.send("You are a STAR!!");
+});
+
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server Started");
 });
