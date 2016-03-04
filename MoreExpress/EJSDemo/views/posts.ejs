@@ -1,0 +1,7 @@
+<link rel="stylesheet" href="app.css">
+
+<h1>Welcome to the posts page ...</h1>
+
+<% for(var i=0; i<postsIn.length; i++) { %>
+    <li> Title: "<%=postsIn[i].title%>".  Author: <%=postsIn[i].author%>.</li>
+    <% } %>
