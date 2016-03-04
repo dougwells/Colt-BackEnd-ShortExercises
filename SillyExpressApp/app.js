@@ -28,7 +28,7 @@ app.get("/repeat/:phrase/:repeat", function(req, res){
     res.send(message);
 });
 
-app.get("/*", function(req, res){
+app.get("*", function(req, res){
     res.send("Sorry, page not found.  What are you doing with your life ...?");
 });
 
