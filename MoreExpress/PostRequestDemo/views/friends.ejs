@@ -1,0 +1,13 @@
+<h3>Friends Page</h3>
+
+<% friends.forEach(function(item){ %>
+    <li><%= item %></li>
+<% }); %>
+<br>
+<hr>
+<!--must match app.post("/addfriend", fn ...)-->
+<form action="/addfriend" method="POST">    
+    <label for="fname">Add New Friend: </label>
+    <input type="text" id="fname" placeholder="Friend's Name" name="newfriend">
+    <button>Add New Friend</button>
+</form>
