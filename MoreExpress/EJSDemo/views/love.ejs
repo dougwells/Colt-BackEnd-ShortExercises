@@ -1,11 +1,14 @@
-<h1>You fell in love with: <%= love %></h1>
+<% include partials/header %>
 
-<% if (love.toLowerCase() === "surfing"){ %>
+<h1>You fell in love with: <%= love.sport %></h1>
+
+<% if (love.sport.toLowerCase() === "surfing"){ %>
     <h3>Surfs up!</h3>
     <% }else{ %>
     <h3>What ... you do not like surfing?</h3>
     <% } %>
+    <img src="<%= love[love.sport] %>" width = "300px" height="300px">
 
 <p>PS ... this is the love.ejs file</p>
 
-
+<% include partials/footer %>

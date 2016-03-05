@@ -2,15 +2,20 @@ var express = require("express");
 var app = express();
 
 app.use(express.static('public'));
+app.set('view engine', 'ejs');
 
 app.get("/", function(req, res){
-    res.render("home.ejs")
+    res.render("home")
 });
 
-app.get("/fallinlovewith/:thing", function(req, res){
-  var love =  req.params.thing;
+app.get("/fallinlovewith/:love", function(req, res){
+  var love =  req.params.love;
   res.render("love.ejs", {
-    love:love
+      love: {
+          sport:love,
+          surfing: "http://www.surfing-waves.com/forum/images/up/1130486538_1.jpg",
+          skiing: "http://lorrainehuber.com/wp-content/uploads/2009/01/lori-skiing-sepp-mallaun.jpg"
+      }
   });
 });
 

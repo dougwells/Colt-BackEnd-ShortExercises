@@ -1,7 +1,10 @@
-<link rel="stylesheet" href="app.css">
+<% include partials/header %>
 
 <h1>Welcome to the posts page ...</h1>
 
 <% for(var i=0; i<postsIn.length; i++) { %>
     <li> Title: "<%=postsIn[i].title%>".  Author: <%=postsIn[i].author%>.</li>
     <% } %>
+
+
+<% include partials/footer %>
