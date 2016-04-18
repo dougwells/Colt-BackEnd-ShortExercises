@@ -1,0 +1,12 @@
+<h1>My friends</h1>
+
+<% friends.map(function(friend){ %>
+<li>
+    <%=friend %>
+</li>
+<% }); %>
+
+<form action = "/friends" method = 'POST'>
+    <input name = "friendName" placeholder="name">
+    <button>submit</button>
+</form>
