@@ -1,7 +1,7 @@
 <h1>Edit one blogpost</h1>
 <form action= '/blogs/<%=blog._id %>?_method=PUT' method="POST">
-    <input name="<%=blog.author%>" placeholder= "<%= blog.author %>" >
-    <input name= "<%=blog.subject%>" placeholder = "<%= blog.subject %>" >
-    <input name = "<%=blog.description%>" placeholder= "<%= blog.description %>" >
+    <input name="author" placeholder= "<%= blog.author %>" >
+    <input name= "subject" placeholder = "<%= blog.subject %>" >
+    <input name = "description" placeholder= "<%= blog.description %>" >
 <button>submit</button>
 </form>

@@ -31,10 +31,17 @@ app.get('/blogs', function(req, res){
         Blog.find({}, function(err, blogs){
             if(err){console.log('error')
         }else{
-          res.render('index', {blogs});  
+          res.render('index', {blogs}); 
         }
     });
     
+});
+
+
+
+//show new blog post form
+app.get('/blogs/new', function(req, res){
+    res.render('new');
 });
 
 //Add new blog post
@@ -43,13 +50,13 @@ app.post('/blogs', function(req, res){
     var subject = req.body.subject;
     var imageUrl = req.body.imageUrl;
     var description = req.body.description;
-    Blog.create({author:author, subject: subject, imageUrl:imageUrl, description:description});
-    res.redirect('/blogs');
-});
-
-//show new blog post form
-app.get('/blogs/new', function(req, res){
-    res.render('new');
+    Blog.create({author:author, subject: subject, imageUrl:imageUrl, description:description}, function(err, blog){
+        if (err){res.send("oops, error")
+        }else{
+            res.redirect('/blogs');
+        }
+    });
+    // res.send("Post request received");
 });
 
 //Edit existing blog post
@@ -76,8 +83,13 @@ app.get('/blogs/:id', function(req, res){
 
 //Change 1 blog post
 app.put('/blogs/:id', function(req, res){
-    
-    Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, blog){
+    var author = req.body.author;
+    var subject = req.body.subject;
+    var imageUrl = req.body.imageUrl;
+    var description = req.body.description;
+    var editedBlog = {author:author, subject: subject, imageUrl:imageUrl, description:description}
+
+    Blog.findByIdAndUpdate(req.params.id, editedBlog, function(err, blog){
             if(err){console.log("error");
         }else{
             res.redirect('/blogs/'+req.params.id);
