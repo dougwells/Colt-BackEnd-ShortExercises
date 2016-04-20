@@ -1,0 +1,11 @@
+<h1>Show one blog</h1>
+
+<h2>Author: <%= blog.author %> </h2>
+<h2>Subject: <%= blog.subject %> </h2>
+<h2>Description: <%= blog.description %> </h2>
+<a href = <%= "/blogs/"+blog._id +"/edit" %> >edit </a>
+
+<form action = <%= "/blogs/"+blog._id %> method = "delete">
+    <button>Delete</button>
+</form>
+

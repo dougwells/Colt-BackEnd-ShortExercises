@@ -1,0 +1,10 @@
+<h1>List of all blogs</h1>
+
+
+   <% blogs.forEach(function(blog){ %>
+          <li>
+            <%= blog.author; %>   
+            <a href = <%= "/blogs/"+blog._id %> >Edit</a>
+        </li>
+        <br>
+    <% }); %>
