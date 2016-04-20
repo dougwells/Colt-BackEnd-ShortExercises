@@ -1,0 +1,12 @@
+<% include partials/header %>
+
+<link rel="stylesheet" href="app.css">
+
+<h1>Lists of posts</h1>
+
+    <% posts.forEach(function(post){ %>
+    <% var message = "Post Author: "+post.author+".  Subject: "+post.subject; %>
+    <li> <%= message %> </li>
+    <% }); %>
+
+<% include partials/footer %>

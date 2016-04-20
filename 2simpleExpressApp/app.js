@@ -1,6 +1,28 @@
 var express = require('express');
 var app = express();
 
+app.use(express.static('public'));
+app.set("view engine", "ejs");
+
+app.get('/', function(req,res){
+    res.render('home');
+    // res.send("Hi there ... Doug is back in Colts Bootcamp!");
+});
+
+app.get('/posts', function(req, res){
+   var postArray = [
+       {author: "Doug", subject: 'Surfing'},
+       {author: "Linda", subject: 'Bay Area'},
+       {author: "Savannah", subject: "Reading"},
+       {author: "Sierra", subject: "Espanol"}
+       ];
+       res.render('posts',{posts: postArray})
+});
+
+app.get('/fallinlovewith/:thing', function(req, res){
+    var message = "You fell in love with : " + req.params.thing;
+    res.render('love', {thingVar: message});            
+});
 
 
 app.get('/speak/:animal', function(req,res){
@@ -17,9 +39,6 @@ app.get('/repeat/:phrase/:repeat', function(req, res){
         res.send(message);
 });
 
-app.get('/', function(req,res){
-    res.send("Hi there ... Doug is back in Colts Bootcamp!");
-});
 
 app.get('/*', function(req, res){
     res.send("Hi there.  What are you doing today?");
