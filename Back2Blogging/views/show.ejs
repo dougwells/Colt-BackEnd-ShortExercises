@@ -5,7 +5,7 @@
 <h2>Description: <%= blog.description %> </h2>
 <a href = <%= "/blogs/"+blog._id +"/edit" %> >edit </a>
 
-<form action = <%= "/blogs/"+blog._id %> method = "delete">
+<form action = <%= "/blogs/"+blog._id +"?_method=DELETE"%> method = "POST">
     <button>Delete</button>
 </form>
 

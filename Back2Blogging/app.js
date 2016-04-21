@@ -83,13 +83,8 @@ app.get('/blogs/:id', function(req, res){
 
 //Change 1 blog post
 app.put('/blogs/:id', function(req, res){
-    var author = req.body.author;
-    var subject = req.body.subject;
-    var imageUrl = req.body.imageUrl;
-    var description = req.body.description;
-    var editedBlog = {author:author, subject: subject, imageUrl:imageUrl, description:description}
 
-    Blog.findByIdAndUpdate(req.params.id, editedBlog, function(err, blog){
+    Blog.findByIdAndUpdate(req.params.id, req.body.editedBlog, function(err, blog){
             if(err){console.log("error");
         }else{
             res.redirect('/blogs/'+req.params.id);
