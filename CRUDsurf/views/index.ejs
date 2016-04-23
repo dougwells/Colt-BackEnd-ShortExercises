@@ -1,0 +1,9 @@
+<h2>list of all surfers</h2>
+
+<% allSurfers.map(function(surfer){ %>
+
+<a href="/surfers/<%= surfer._id %>">    <%= surfer.title; %>   </a>
+<h3>    <%= surfer.description;    %></h3>
+<h3>    <%= surfer.Url;            %></h3>
+<hr>
+<% }); %>
