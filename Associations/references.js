@@ -1,52 +1,45 @@
 var mongoose = require('mongoose');
+var Post = require('./models/post.js');
+var User = require('./models/user.js');
+var ObjectId = require('mongoose').Types.ObjectId; 
 
 mongoose.connect("mongodb://localhost/blog_demo_2");
 
-//Post Schema
-var postSchema = new mongoose.Schema({
-   title: String,
-   content: String
-});
-
-//Posts Object & Model
-var Post = mongoose.model("Post", postSchema);
-
-//User Collection: email, name
-var userSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    posts: [
-        {
-            type: mongoose.Schema.Types.ObjectId, //"references" posts into user
-            ref: "Post"
-    }
-    ]
-});
-var User = mongoose.model('User', userSchema);
 
 Post.create({
-    title: "Part 3: How to cook the best burgers",
-    content: "Serve Medium Rare.  Right off the grill"
+    title: "Part 4: How to cook the best burgers",
+    content: "Don't forget the condiments"
 }, function(err, post){
     if(err){
         console.log(err);
     }else{
         User.findOne({email:"bob@yahoo.com"}, function(err,foundUser){
-           if(err){
-               console.log(err);
-           }else{
-               foundUser.posts.push(post),
-               foundUser.save(function(err,data){
-                   if(err){
-                       console.log(err);
-                   }else{
-                       console.log(data);
-                   }
-               });
-           }
+          if(err){
+              console.log(err);
+          }else{
+              foundUser.posts.push(post),
+              foundUser.save(function(err,data){
+                  if(err){
+                      console.log(err);
+                  }else{
+                      console.log(data);
+                  }
+              });
+          }
         });
     }
 });
+
+//Populate posts in user object
+// User.findOne({email: "bob@yahoo.com"}).populate("posts").exec(function(err, user){
+//     if(err){
+//         console.log(err)
+//     }else{
+//         console.log(user)
+//     }
+// });
+
+//find all posts for that user
 
 // User.create({
 //     name: "Bob Belchan",
