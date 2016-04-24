@@ -1,0 +1,8 @@
+<h2><%=oneSurfer.title %></h2>
+
+<form action="/surfers/<%= oneSurfer._id %>?_method=PUT" method = "POST">
+    <input name= "oneSurfer[title]" placeholder= "<%= oneSurfer.title %>" >
+    <input name= "oneSurfer[description]" placeholder= "<%= oneSurfer.description %>" >
+    <input name= "oneSurfer[imageUrl]" placeholder= "<%= oneSurfer.imageUrl %>" >
+    <button>Submit</button>
+</form>

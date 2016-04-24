@@ -3,6 +3,9 @@
 <h3>    <%= oneSurfer.title;          %></h3>
 <h3>    <%= oneSurfer.description;    %></h3>
 <h3>    <%= oneSurfer.Url;            %></h3>
-<a href="#">Edit</a>
-<a href = "#">Delete</a>
+<a href="/surfers/<%=oneSurfer._id %>/edit">Edit</a>
+
+<form action="/surfers/<%= oneSurfer._id %>?_method=DELETE" method = "POST">
+<button>Delete</button>
+</form>
 <hr>

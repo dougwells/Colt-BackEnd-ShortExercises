@@ -55,7 +55,6 @@ app.post('/surfers', function(req, res){
         if(err){
             console.log(err);
         }else{
-            console.log(surfer);
             res.redirect('/surfers');
         }
     });
@@ -70,6 +69,40 @@ app.get('/surfers/:id', function(req, res){
           res.render('show', {oneSurfer});
       }
   }); 
+});
+
+//edit one surfer
+app.get('/surfers/:id/edit', function(req, res){
+    Surfer.findOne({_id: req.params.id}, function(err, oneSurfer){
+        if(err){
+            console.log(err);
+        }else{
+            // res.send(oneSurfer);
+          res.render('edit', {oneSurfer}); 
+        }
+    });
+});
+
+//Update one surfer
+app.put('/surfers/:id', function(req, res){
+    Surfer.findByIdAndUpdate(req.params.id, req.body.oneSurfer, function(err, data){
+        if(err){
+            console.log(err);
+        }else{
+            res.redirect('/surfers');
+        }
+    });
+});
+
+app.delete('/surfers/:id', function(req, res){
+    Surfer.findByIdAndRemove(req.params.id, function(err, deletedSurfer){
+        if(err){
+            console.log(err);
+        }else{
+            res.redirect('/surfers');
+        }
+    });
+    
 });
 
 
