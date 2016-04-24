@@ -1,0 +1,13 @@
+<h2>Your selected duck dive image</h2>
+
+<h3>    <%= duck.title;          %></h3>
+<h3>    <%= duck.description;    %></h3>
+<img src="<%= duck.imageUrl %>" height="300" width="300" >
+<br>
+<a href="/ducks/<%=duck._id %>/edit">Edit</a>
+<br>
+
+<form action ="/ducks/<%=duck._id%>?_method=DELETE" method="POST">
+<button>Delete</button>
+</form>
+<hr>

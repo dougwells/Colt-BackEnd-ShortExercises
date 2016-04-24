@@ -1,0 +1,8 @@
+<h2>See one duck dive</h2>
+
+<form action= "/ducks/<%=duck._id%>?_method=PUT" method ="POST" >
+    <input name="duck[title]" placeholder="<%=duck.title%>">
+    <input name="duck[description]" placeholder="<%=duck.description%>">
+    <input name="duck[imageUrl]" placeholder="<%=duck.imageUrl%>">
+    <button>Submit</button>
+</form>

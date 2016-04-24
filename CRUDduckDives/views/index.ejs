@@ -1,0 +1,9 @@
+<h2>list of all Duck Dive Images</h2>
+<hr>
+
+<% ducks.map(function(duck){ %>
+    <a href='/ducks/<%= duck._id %>' > <%= duck.title; %></a>
+    <h3> <%= duck.description; %></h3>
+    <img src="<%= duck.imageUrl %>" height="300" width="300" >
+    <hr>
+<% }); %>
